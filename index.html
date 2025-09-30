@@ -32,17 +32,33 @@
     @keyframes spinText{0%,88%{transform:rotate(0)}95%{transform:rotate(360deg)}100%{transform:rotate(360deg)}}
 
     /* Video sizing */
-    #video{display:none;border-radius:12px;box-shadow:0 10px 40px rgba(0,0,0,0.7);max-width:80vw;max-height:60vh;width:auto;height:auto}
+    #video{
+      display:none;
+      border-radius:12px;
+      box-shadow:0 10px 40px rgba(0,0,0,0.7);
+      max-width:80vw;
+      max-height:60vh;
+      width:auto;
+      height:auto;
+    }
 
     /* Khá Bảnh GIF trái + phải */
     .khabanh{
-      position:fixed;bottom:12px;width:180px;display:none;z-index:30;
+      position:fixed;
+      bottom:12px;
+      width:180px;
+      display:none;
+      z-index:30;
       filter: drop-shadow(0 6px 12px rgba(0,0,0,0.6));
       animation:dance 1s infinite;
     }
-    #khabanh-left{left:10px; transform: scaleX(-1);} /* lật gương bên trái */
+    #khabanh-left{left:10px;}
     #khabanh-right{right:10px;}
-    @keyframes dance{0%,100%{transform:translateY(0)}25%{transform:translateY(-8px)}50%{transform:translateY(0)}75%{transform:translateY(-8px)}}
+
+    @keyframes dance{
+      0%,100%{transform:translateY(0) scaleX(var(--flip,1));}
+      50%{transform:translateY(-8px) scaleX(var(--flip,1));}
+    }
 
     /* Sân khấu nhấp nháy đèn */
     #stageLights{
@@ -76,7 +92,7 @@
 
   <div id="container">
     <h1 id="topText">TRAI ĐẸP VIỆT NAM</h1>
-    <video id="video" controls>
+    <video id="video" controls playsinline webkit-playsinline>
       <source src="https://raw.githubusercontent.com/Iloveyou97/pornhub/main/Lamtroc.mp4" type="video/mp4">
       Trình duyệt của bạn không hỗ trợ video.
     </video>
@@ -84,14 +100,14 @@
   </div>
 
   <!-- Khá Bảnh múa quạt -->
-  <img id="khabanh-left" class="khabanh" src="kb-m-a-qu-t-unscreen.gif" alt="Khá Bảnh trái">
-  <img id="khabanh-right" class="khabanh" src="kb-m-a-qu-t-unscreen.gif" alt="Khá Bảnh phải">
+  <img id="khabanh-left" class="khabanh" src="kb-m-a-qu-t-unscreen.gif" style="--flip:-1;" alt="Khá Bảnh trái">
+  <img id="khabanh-right" class="khabanh" src="kb-m-a-qu-t-unscreen.gif" style="--flip:1;" alt="Khá Bảnh phải">
 
   <!-- Sân khấu đèn -->
   <div id="stageLights"></div>
 
   <script>
-  /* ==== Fireworks code giữ nguyên ==== */
+  /* ==== Fireworks ==== */
   const canvas=document.getElementById('fwCanvas');const ctx=canvas.getContext('2d');
   let W=canvas.width=innerWidth,H=canvas.height=innerHeight;
   window.addEventListener('resize',()=>{W=canvas.width=innerWidth;H=canvas.height=innerHeight});
