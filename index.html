@@ -60,45 +60,19 @@
       width:auto;height:auto;
     }
 
-    <!-- Khá Bảnh múa quạt (cập nhật) -->
-<div id="khabanh-container">
-  <img id="khabanh-left" class="khabanh"
-       src="https://raw.githubusercontent.com/Iloveyou97/pornhub/main/kb-m-a-qu-t-unscreen.gif"
-       alt="Khá Bảnh trái">
-  <img id="khabanh-right" class="khabanh"
-       src="https://raw.githubusercontent.com/Iloveyou97/pornhub/main/kb-m-a-qu-t-unscreen.gif"
-       alt="Khá Bảnh phải">
-</div>
-
-<style>
-  #khabanh-container{
-    position:fixed;
-    bottom:0;
-    width:100%;
-    display:flex;
-    justify-content:space-between;
-    padding:0 10px;
-    z-index:30;
-  }
-
-  .khabanh{
-    width:180px;
-    animation: dance 1s infinite;
-    filter: drop-shadow(0 6px 12px rgba(0,0,0,0.6));
-  }
-
-  #khabanh-left{
-    transform: scaleX(-1);
-  }
-
-  @keyframes dance{
-    0%,100%{transform:translateY(0);}
-    50%{transform:translateY(-8px);}
-  }
-
-  @media (max-width:600px){
-    .khabanh{width:120px}
-  }
+    /* Khá Bảnh GIF */
+    .khabanh{
+      position:fixed;bottom:12px;width:180px;
+      display:none;z-index:30;
+      filter: drop-shadow(0 6px 12px rgba(0,0,0,0.6));
+      animation:jumpDance 1s infinite;
+    }
+    #khabanh-left{left:10px;transform:scaleX(-1);}
+    #khabanh-right{right:10px;}
+    @keyframes jumpDance{
+      0%,100%{transform:translateY(0);}
+      50%{transform:translateY(-10px);}
+    }
 
     /* Sân khấu nhấp nháy */
     #stageLights{
@@ -139,7 +113,10 @@
     <h2 id="bottomText">LÂM TRỌT CUTE</h2>
   </div>
 
-  <!-- Khá Bảnh múa quạt -->
+  <!-- Sân khấu -->
+  <div id="stageLights"></div>
+
+  <!-- Khá Bảnh nhảy hai bên (đặt dưới cùng) -->
   <img id="khabanh-left" class="khabanh"
        src="https://raw.githubusercontent.com/Iloveyou97/pornhub/main/kb-m-a-qu-t-unscreen.gif"
        alt="Khá Bảnh trái">
@@ -147,16 +124,6 @@
        src="https://raw.githubusercontent.com/Iloveyou97/pornhub/main/kb-m-a-qu-t-unscreen.gif"
        alt="Khá Bảnh phải">
 
-  <!-- Sân khấu -->
-  <div id="stageLights"></div>
-
   <script>
   /* ==== Fireworks code ==== */
-  const canvas=document.getElementById('fwCanvas');const ctx=canvas.getContext('2d');
-  let W=canvas.width=innerWidth,H=canvas.height=innerHeight;
-  window.addEventListener('resize',()=>{W=canvas.width=innerWidth;H=canvas.height=innerHeight});
-  const rockets=[],particles=[];
-  function rand(a,b){return Math.random()*(b-a)+a}
-  function hueToColor(h,s=100,l=60){return `hsl(${h},${s}%,${l}%)`}
-  class Rocket{constructor(x,y,tx,ty){this.x=x;this.y=y;this.t
-
+  const canvas
